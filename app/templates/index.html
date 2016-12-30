@@ -1,0 +1,33 @@
+{% if user %}
+  Current user: {{ user }}
+{% endif %}
+<hr>
+{% for user in users %}
+  {{ user.__dict__ }}<br>
+{% endfor %}
+<!-- A hidden input named public_token will be appended to this form
+once the user has completed the Link flow. Link will then submit the
+form, sending the public_token to your server. -->
+<form id="some-id" method="POST" action="/authenticate"></form>
+
+<!-- To use Link with longtail institutions on Connect, set the
+data-longtail attribute to 'true'. See the Parameter Reference for
+additional documentation. -->
+<script
+  src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"
+  data-client-name="Students Forward"
+  data-form-id="some-id"
+  data-key="test_key"
+  data-product="auth"
+  data-env="tartan">
+</script>
+
+<br>
+OR Login:
+<br>
+<form method="POST" action="/authenticate">
+{% for user in users %}
+<input type="radio" name="public_token" value="{{ user.public_token }}"> {{ user.id }} <br>
+{% endfor %}
+<input type="submit" value="Submit">
+<form>

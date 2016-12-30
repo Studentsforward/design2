@@ -1,0 +1,9 @@
+<form method="POST" action="/signup">
+    {{ form.csrf_token }}
+    {{ form.email.label }} {{ form.email(size=20) }} <br>
+    {{ form.password.label }} {{ form.password }} <br>
+    <input type="submit" value="Go">
+</form>
+
+<hr>
+<a href='/signup/fb'>Signup with facebook</a>

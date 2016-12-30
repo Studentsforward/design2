@@ -1,0 +1,50 @@
+<html>
+Balance of all accounts: {{ available }}
+<h1>Accounts</h1>
+<table>
+  <tr>
+    {% for key in accounts['accounts'][0] %}
+      <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+{% for row in accounts['accounts'] %}
+  <tr>
+    {% for key in row %}
+      <th>{{ row[key] }}</th>
+    {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+
+<h1>Balances</h1>
+<table>
+  <tr>
+    {% for key in balances['accounts'][0] %}
+      <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+{% for row in balances['accounts'] %}
+  <tr>
+    {% for key in row %}
+      <th>{{ row[key] }}</th>
+    {% endfor %}
+  </tr>
+{% endfor %}
+</table>
+
+<h1>Balances</h1>
+<table>
+  <tr>
+    {% for key in transactions[0] %}
+      <th>{{ key }}</th>
+    {% endfor %}
+  </tr>
+  {% for row in transactions %}
+    <tr>
+      {% for key in row %}
+        <th>{{ row[key] }}</th>
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>
+</html>
